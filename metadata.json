@@ -1,0 +1,6 @@
+{
+  "name": "Purnima S Exteriors & Interiors",
+  "description": "Bespoke luxury interior, exterior, and modular architectural design in Raebareli and beyond.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

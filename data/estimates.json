@@ -1,0 +1,50 @@
+[
+  {
+    "propertyType": "3/4 BHK Luxury Apartment",
+    "areaSqFt": 1800,
+    "qualityTier": "Premium",
+    "city": "Raebareli",
+    "civilCost": 732600,
+    "woodworkCost": 1265400,
+    "modularKitchenCost": 666000,
+    "lightingCost": 399600,
+    "hardwareCost": 266400,
+    "facadeCost": 599400,
+    "totalEstimatedMin": 3929400,
+    "totalEstimatedMax": 4911750,
+    "id": "est-1787053606534",
+    "createdAt": "2026-08-18T11:46:46.534Z"
+  },
+  {
+    "propertyType": "Modular Kitchen & Dining",
+    "areaSqFt": 1000,
+    "qualityTier": "Standard",
+    "city": "Lucknow",
+    "civilCost": 286000,
+    "woodworkCost": 494000,
+    "modularKitchenCost": 260000,
+    "lightingCost": 156000,
+    "hardwareCost": 104000,
+    "facadeCost": 234000,
+    "totalEstimatedMin": 1534000,
+    "totalEstimatedMax": 1917500,
+    "id": "est-1787053596415",
+    "createdAt": "2026-08-18T11:46:36.415Z"
+  },
+  {
+    "propertyType": "3/4 BHK Luxury Apartment",
+    "areaSqFt": 2200,
+    "qualityTier": "Bespoke Heritage",
+    "city": "Lucknow",
+    "civilCost": 1403600,
+    "woodworkCost": 2424400,
+    "modularKitchenCost": 1276000,
+    "lightingCost": 765600,
+    "hardwareCost": 510400,
+    "facadeCost": 1148400,
+    "totalEstimatedMin": 7528400,
+    "totalEstimatedMax": 9410500,
+    "id": "est-1787052931273",
+    "createdAt": "2026-08-18T11:35:31.273Z"
+  }
+]

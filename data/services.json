@@ -1,0 +1,78 @@
+[
+  {
+    "id": "modular-kitchens",
+    "title": "Modular Kitchens",
+    "category": "Modular",
+    "tags": [
+      "Modular",
+      "Custom"
+    ],
+    "description": "State-of-the-art culinary spaces featuring Anti-fingerprint Super-Matte Finishes and sleek Gola Profiles, specifically tailored for the maintenance-free needs of Tier 2 city homeowners.",
+    "features": [
+      "Anti-fingerprint Finishes",
+      "Gola Profiles",
+      "Maintenance-Free Design"
+    ],
+    "imageUrl": "https://lh3.googleusercontent.com/aida/AP1WRLvslr2DgQQCY8t3d2yuPLqU0YcCNWIBC72qRN_DOcW_xl1hCDC4Qsls2HwsAaLYiqvzxJUZw1d2Gd68yhEi7F4_4guqSvgpQMhjxZ_Z_9wrf1z_vulgbcrj0sj69UAiHzu8fG2rBeAOaayiWdPwO770GqM4hhJuCqI3Pkw0vnups3vBXZ6pfQdDgc2GZxDcM2DaI_u-gKo95hCFnuANvohzouRQZ7wTZV_xgLHjFWoG1egGE72spJ3PO47J",
+    "ctaText": "Explore Modular",
+    "targetTab": "modular",
+    "offsetMargin": false
+  },
+  {
+    "id": "living-spaces",
+    "title": "Living Space Interiors",
+    "category": "Interiors",
+    "tags": [
+      "Interiors",
+      "Living Spaces"
+    ],
+    "description": "Transform your living areas with a focus on \"Quiet Luxury\" and \"Japandi Minimalism\", fusing local comfort with global style for a truly serene environment.",
+    "features": [
+      "Quiet Luxury Aesthetic",
+      "Japandi Minimalism",
+      "Global Style, Local Comfort"
+    ],
+    "imageUrl": "https://lh3.googleusercontent.com/aida/AP1WRLvvlmH5vXhwP1wKtOpHuR_AExvTM-GzhDcFBCgby4WAuTNql_pLBp4ex3JOZJUqzi_XkdPJkD-F82S_ol4g6HvVh4jhf5h73u_j2Kr0z1T9wFSabPSK95zbRZtbOzGRylElj4uLq09QzGPNIEVds4oGFshEaVQscRzlbJIUX-e6TiHPwmpJCOuqbY2d_QEv6WBmoDPXokHjyMzp4s_QbkK-8DSrsOtcfQgOytUocjtYZXwjCJirmLz1a6KO",
+    "ctaText": "Explore Interiors",
+    "targetTab": "interiors",
+    "offsetMargin": true
+  },
+  {
+    "id": "bedroom-sanctuaries",
+    "title": "Bedroom Sanctuaries",
+    "category": "Interiors",
+    "tags": [
+      "Interiors",
+      "Bedrooms"
+    ],
+    "description": "Create personal havens embracing \"Quiet Luxury\" and \"Japandi Minimalism\", ensuring restful nights in beautifully curated spaces that reflect elevated comfort.",
+    "features": [
+      "Serene Ambiance",
+      "Custom Furnishings",
+      "Tailored Lighting"
+    ],
+    "imageUrl": "https://lh3.googleusercontent.com/aida/AP1WRLvPXX2eirAaT71EnZUD-AfSZT6N9fPy6WoDH4wAbNzM7IXRMXJX-X2LeTOJebdb9msitvNRxhZ9zPDcz4vJm9mELNuLi-iUuvVG2oFl0outk-w9naG8_hyFt7HHm0-4lh9YR0l5SHJ-c9RSp_JGeX4LbEE_iUqlXAF0lIQvMh__7PaykneADEiogOVTXhHHqwW6fBFWKFY9hTT-u8n5t0B8oguDjajdzaXTHhsGjABgwlISTN_hTWEO55D0",
+    "ctaText": "Explore Bedrooms",
+    "targetTab": "interiors",
+    "offsetMargin": false
+  },
+  {
+    "id": "facade-renovation",
+    "title": "Modern Facade & Renovation",
+    "category": "Exteriors",
+    "tags": [
+      "Exteriors",
+      "Renovation"
+    ],
+    "description": "Transformative renovation and Modern Facade Engineering using premium ACP/HPL cladding. We blend structural improvements with the latest local exterior trends.",
+    "features": [
+      "Modern Facade Engineering",
+      "ACP/HPL Cladding",
+      "Complete Transformation"
+    ],
+    "imageUrl": "https://lh3.googleusercontent.com/aida/AP1WRLspZNgMckfFW3nJbsDbA9jWdMYV5sgOYvDWy0utaQjOzQsclRpgpZeimod7muKdV1YeY-LpmTU_uhM3hhDOcxzn75iQeMByOTnWNH8eCQiU1LRM90vCSvedCIvldHz1xuTouEuU3cRluWyTKB07dONvD0kd350Hi4r05Z2pYqqQIJ_u-Jhu9_r2faomDAL-JCjFhCjqlYbpNbEdwUq5jJe_x3KRZ0aV99ByJlMHy-9zZvJX2-pIMhGY3NM",
+    "ctaText": "Explore Exteriors",
+    "targetTab": "exteriors",
+    "offsetMargin": true
+  }
+]

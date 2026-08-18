@@ -1,0 +1,52 @@
+[
+  {
+    "fullName": "Thakur Rajesh Pratap Singh",
+    "contact": "+91 94150 99999",
+    "city": "Raebareli",
+    "propertyType": "Independent Villa / Kothi",
+    "budget": "₹40L – ₹75L (Luxury Turnkey Villa)",
+    "scopeNotes": "Turnkey villa interior with custom teak paneling and exterior ACP elevation.",
+    "preferredDate": "",
+    "preferredTimeSlot": "11:00 AM – 01:00 PM",
+    "consultationMode": "studio",
+    "id": "consult-1787052927921",
+    "referenceCode": "PS-401826",
+    "status": "Pending",
+    "createdAt": "2026-08-18T11:35:27.921Z",
+    "updatedAt": "2026-08-18T11:35:27.921Z"
+  },
+  {
+    "id": "consult-1",
+    "referenceCode": "PS-849201",
+    "fullName": "Dr. R. K. Verma",
+    "contact": "+91 94150 12345",
+    "city": "Raebareli",
+    "propertyType": "Independent Villa / Kothi",
+    "budget": "₹40L – ₹75L (Luxury Turnkey Villa)",
+    "consultationMode": "site",
+    "status": "Completed",
+    "scopeNotes": "Full interior remodeling + ACP exterior facade cladding with Fundermax panels.",
+    "preferredDate": "2026-07-10",
+    "preferredTimeSlot": "11:00 AM – 01:00 PM",
+    "createdAt": "2026-07-01T10:30:00.000Z",
+    "updatedAt": "2026-07-15T16:00:00.000Z",
+    "directorNotes": "Project completed in 42 days. Client praised direct stakeholder communication."
+  },
+  {
+    "id": "consult-2",
+    "referenceCode": "PS-391024",
+    "fullName": "Ananya Srivastava",
+    "contact": "+91 98390 67890",
+    "city": "Lucknow",
+    "propertyType": "3/4 BHK Luxury Apartment",
+    "budget": "₹25L – ₹40L (Premium Full Interior)",
+    "consultationMode": "studio",
+    "status": "Site Visit Scheduled",
+    "scopeNotes": "Gola profile modular kitchen with super-matte finish & master suite panelling.",
+    "preferredDate": "2026-08-20",
+    "preferredTimeSlot": "02:00 PM – 04:00 PM",
+    "createdAt": "2026-08-15T14:15:00.000Z",
+    "updatedAt": "2026-08-16T09:00:00.000Z",
+    "directorNotes": "Site visit scheduled for Gomti Nagar penthouse."
+  }
+]
