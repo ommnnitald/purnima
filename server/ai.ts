@@ -70,7 +70,7 @@ Required JSON structure:
   "directorTip": "string"
 }`;
 
-    const modelsToTry = ['gemini-2.0-flash', 'gemini-1.5-flash'];
+    const modelsToTry = ['gemini-3.5-flash', 'gemini-3.6-flash', 'gemini-flash-latest'];
     for (const model of modelsToTry) {
       try {
         const response = await aiInstance.models.generateContent({

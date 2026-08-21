@@ -51,38 +51,45 @@ Required JSON structure:
   "directorTip": "string"
 }`;
 
-        const geminiRes = await fetch(
-          `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`,
-          {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              contents: [{ parts: [{ text: promptText }] }],
-            }),
+        const modelsToTry = ['gemini-3.5-flash', 'gemini-3.6-flash', 'gemini-flash-latest'];
+        for (const model of modelsToTry) {
+          try {
+            const geminiRes = await fetch(
+              `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`,
+              {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                  contents: [{ parts: [{ text: promptText }] }],
+                }),
+              }
+            );
+
+            if (geminiRes.ok) {
+              const geminiData = (await geminiRes.json()) as any;
+              const text = geminiData.candidates?.[0]?.content?.parts?.[0]?.text || '';
+              const cleanJson = text.replace(/```json/g, '').replace(/```/g, '').trim();
+              const parsed = JSON.parse(cleanJson);
+
+              return new Response(
+                JSON.stringify({
+                  success: true,
+                  data: {
+                    themeTitle: parsed.themeTitle || `${style} for ${pType}`,
+                    summary: parsed.summary || `Personalized design framework for your ${area} sq.ft residence in ${location}.`,
+                    materialPalette: parsed.materialPalette || [],
+                    lightingPlan: parsed.lightingPlan || 'Warm 3000K indirect LED cove luminescence with magnetic track accents.',
+                    estimatedTimelineDays: parsed.estimatedTimelineDays || 45,
+                    directorTip: parsed.directorTip || 'Our 45-day guaranteed handover includes daily site reports managed directly by directors Sudhanshu & Purnima Sonkar.',
+                    isAiGenerated: true,
+                  },
+                }),
+                { headers: corsHeaders }
+              );
+            }
+          } catch (modelErr) {
+            console.warn(`Model ${model} failed in Cloudflare function:`, modelErr);
           }
-        );
-
-        if (geminiRes.ok) {
-          const geminiData = (await geminiRes.json()) as any;
-          const text = geminiData.candidates?.[0]?.content?.parts?.[0]?.text || '';
-          const cleanJson = text.replace(/```json/g, '').replace(/```/g, '').trim();
-          const parsed = JSON.parse(cleanJson);
-
-          return new Response(
-            JSON.stringify({
-              success: true,
-              data: {
-                themeTitle: parsed.themeTitle || `${style} for ${pType}`,
-                summary: parsed.summary || `Personalized design framework for your ${area} sq.ft residence in ${location}.`,
-                materialPalette: parsed.materialPalette || [],
-                lightingPlan: parsed.lightingPlan || 'Warm 3000K indirect LED cove luminescence with magnetic track accents.',
-                estimatedTimelineDays: parsed.estimatedTimelineDays || 45,
-                directorTip: parsed.directorTip || 'Our 45-day guaranteed handover includes daily site reports managed directly by directors Sudhanshu & Purnima Sonkar.',
-                isAiGenerated: true,
-              },
-            }),
-            { headers: corsHeaders }
-          );
         }
       } catch (err) {
         console.warn('Cloudflare function Gemini call failed, falling back to rule engine:', err);
