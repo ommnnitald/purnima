@@ -8,6 +8,7 @@ import { PortfolioView } from './components/PortfolioView';
 import { ConsultationView } from './components/ConsultationView';
 import { AIAdvisorModal } from './components/AIAdvisorModal';
 import { DirectorDashboardModal } from './components/DirectorDashboardModal';
+import { WhatsAppConcierge } from './components/WhatsAppConcierge';
 import { motion, AnimatePresence } from 'motion/react';
 
 export function App() {
@@ -68,6 +69,9 @@ export function App() {
         isOpen={isDirectorModalOpen}
         onClose={() => setIsDirectorModalOpen(false)}
       />
+
+      {/* Persistent WhatsApp Director Concierge Widget */}
+      <WhatsAppConcierge />
 
       {/* Persistent Footer */}
       <Footer setActiveTab={setActiveTab} />

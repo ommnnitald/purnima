@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import { ActiveTab, PortfolioProject } from '../types';
 import { BeforeAfterSlider } from './BeforeAfterSlider';
 import { MaterialPaletteViewer } from './MaterialPaletteViewer';
+import { FloorPlanExplorer } from './FloorPlanExplorer';
+import { LightingVisualizer } from './LightingVisualizer';
+import { ProjectTrackerModal } from './ProjectTrackerModal';
 import {
   HERO_IMAGE,
   EXPERTISE_INTERIORS_IMG,
@@ -342,6 +345,15 @@ export const HomeView: React.FC<HomeViewProps> = ({ setActiveTab }) => {
 
       {/* INTERACTIVE MATERIAL & FINISH PALETTE VIEWER */}
       <MaterialPaletteViewer />
+
+      {/* INTERACTIVE 2D FLOOR PLAN & HOTSPOT EXPLORER */}
+      <FloorPlanExplorer />
+
+      {/* DAY vs NIGHT LIGHTING VISUALIZER */}
+      <LightingVisualizer />
+
+      {/* LIVE 45-DAY PROJECT MILESTONE TRACKER */}
+      <ProjectTrackerModal isInlineSection={true} />
 
       {/* 4. THE LEGACY APPROACH */}
       <section className="py-20 bg-[#1d1625] text-white relative">
