@@ -42,3 +42,26 @@ export interface ConsultationFormData {
   preferredDate?: string;
   preferredTimeSlot?: string;
 }
+
+export interface BeforeAfterProject {
+  id: string;
+  title: string;
+  city: string;
+  category: string;
+  handoverDays: number;
+  beforeImg: string;
+  afterImg: string;
+  description: string;
+  keySpecs: string[];
+}
+
+export interface MaterialSwatch {
+  id: string;
+  name: string;
+  category: 'Woodwork' | 'Fittings' | 'Countertop' | 'Facade' | 'Lighting';
+  durabilityTag: string;
+  tier2Benefit: string;
+  warranty: string;
+  imageUrl: string;
+  description: string;
+}

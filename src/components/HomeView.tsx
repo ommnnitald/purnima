@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { ActiveTab, PortfolioProject } from '../types';
+import { BeforeAfterSlider } from './BeforeAfterSlider';
+import { MaterialPaletteViewer } from './MaterialPaletteViewer';
 import {
   HERO_IMAGE,
   EXPERTISE_INTERIORS_IMG,
@@ -17,6 +19,7 @@ import {
   PhoneCall,
   MapPin,
   ChevronRight,
+  Building2,
 } from 'lucide-react';
 import { motion } from 'motion/react';
 
@@ -90,8 +93,8 @@ export const HomeView: React.FC<HomeViewProps> = ({ setActiveTab }) => {
           >
             {/* Subtle Eyebrow Badge */}
             <motion.div variants={itemVariants} className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#322a3a]/80 backdrop-blur-md border border-[#D4AF37]/30 text-xs font-grotesk tracking-wider uppercase text-[#D4AF37] mb-6 shadow-sm">
-              <Sparkles className="w-3.5 h-3.5" />
-              <span>Raebareli • Lucknow • NCR</span>
+              <Building2 className="w-3.5 h-3.5" />
+              <span>Raebareli • Lucknow • Kanpur • Ayodhya • Prayagraj</span>
             </motion.div>
 
             {/* Main Headline */}
@@ -100,17 +103,17 @@ export const HomeView: React.FC<HomeViewProps> = ({ setActiveTab }) => {
               className="font-garamond text-4xl sm:text-5xl lg:text-6xl font-normal tracking-tight text-white leading-[1.15] mb-4"
             >
               International Design. <br />
-              <span className="italic font-normal text-[#D4AF37]">Built for Raebareli.</span>
+              <span className="italic font-normal text-[#D4AF37]">Built for Tier-2 UP.</span>
             </motion.h1>
 
             {/* Sub-headline */}
             <motion.p variants={itemVariants} className="font-grotesk text-lg sm:text-xl font-light text-[#cbc4cc] mb-6">
-              Global Standards, Local Soul.
+              Global Architectural Standards, Local Soul.
             </motion.p>
 
             {/* Description */}
             <motion.p variants={itemVariants} className="font-grotesk text-sm sm:text-base text-[#cbc4cc]/90 font-light leading-relaxed mb-8 max-w-xl">
-              We bridge the gap between global architectural trends and Tier-2 practicality. Experience quiet luxury, maintenance-free materials, and transparent local execution by registered directors.
+              We bring quiet luxury, 100% waterproof materials, and transparent 45-day milestone handovers to homeowners across Raebareli, Lucknow, Kanpur, Ayodhya, Prayagraj & NCR.
             </motion.p>
 
             {/* CTA Group */}
@@ -333,6 +336,12 @@ export const HomeView: React.FC<HomeViewProps> = ({ setActiveTab }) => {
           </motion.div>
         </div>
       </section>
+
+      {/* BEFORE vs AFTER SITE TRANSFORMATION SLIDER */}
+      <BeforeAfterSlider />
+
+      {/* INTERACTIVE MATERIAL & FINISH PALETTE VIEWER */}
+      <MaterialPaletteViewer />
 
       {/* 4. THE LEGACY APPROACH */}
       <section className="py-20 bg-[#1d1625] text-white relative">

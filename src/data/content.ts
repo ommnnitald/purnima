@@ -191,3 +191,92 @@ export const COMPANY_DETAILS = {
   established: '2014',
   experience: '10+ Years',
 };
+
+export const BEFORE_AFTER_PROJECTS = [
+  {
+    id: 'ba-lucknow-penthouse',
+    title: 'Gomti Nagar Living Room Transformation',
+    city: 'Lucknow',
+    category: 'Living Room',
+    handoverDays: 42,
+    beforeImg: 'https://images.unsplash.com/photo-1541888946425-d0fbb186a5b3?auto=format&fit=crop&q=80&w=1000', // Unfinished raw concrete site
+    afterImg: HERO_IMAGE, // Luxury living room
+    description: 'Converted an unfinished bare shell concrete apartment into a Japandi-inspired quiet luxury sanctuary with hidden mood channels and acoustic wall panels.',
+    keySpecs: ['Italian Botticino Marble', 'Hidden Mood Channels', 'Custom Velvet Lounge'],
+  },
+  {
+    id: 'ba-raebareli-kitchen',
+    title: 'Vikas Nagar Gola Profile Kitchen Facelift',
+    city: 'Raebareli',
+    category: 'Modular Kitchen',
+    handoverDays: 30,
+    beforeImg: 'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=1000', // Traditional messy old kitchen
+    afterImg: 'https://lh3.googleusercontent.com/aida/AP1WRLvslr2DgQQCY8t3d2yuPLqU0YcCNWIBC72qRN_DOcW_xl1hCDC4Qsls2HwsAaLYiqvzxJUZw1d2Gd68yhEi7F4_4guqSvgpQMhjxZ_Z_9wrf1z_vulgbcrj0sj69UAiHzu8fG2rBeAOaayiWdPwO770GqM4hhJuCqI3Pkw0vnups3vBXZ6pfQdDgc2GZxDcM2DaI_u-gKo95hCFnuANvohzouRQZ7wTZV_xgLHjFWoG1egGE72spJ3PO47J', // Sleek modern Gola kitchen
+    description: 'Replaced outdated tiled counter and wooden doors with 100% boiling-water-proof HDHMR carcass, anti-fingerprint super-matte shutters, and seamless Gola channels.',
+    keySpecs: ['Boiling-Water-Proof HDHMR', 'Anti-Fingerprint Matte Shutters', 'German Soft-Close Drawers'],
+  },
+  {
+    id: 'ba-kanpur-facade',
+    title: 'Civil Lines Villa Exterior Renovation',
+    city: 'Kanpur',
+    category: 'Exterior Facade',
+    handoverDays: 35,
+    beforeImg: 'https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?auto=format&fit=crop&q=80&w=1000', // Plain old painted house
+    afterImg: EXPERTISE_EXTERIORS_IMG, // Modern architectural facade
+    description: 'Transformed an aging 2-story brick elevation with exterior HPL wooden slats, weatherproof ACP paneling, and warm dusk architectural uplighting.',
+    keySpecs: ['Fundermax HPL Paneling', 'Weatherproof ACP Cladding', 'IP67 Dusk Uplighters'],
+  },
+];
+
+export const MATERIAL_SWATCHES = [
+  {
+    id: 'bwp-marine-ply',
+    name: 'BWP 710 Marine Grade Plywood',
+    category: 'Woodwork' as const,
+    durabilityTag: '100% Water & Termite Proof',
+    tier2Benefit: 'Zero swelling or warping during harsh UP monsoons & high humidity.',
+    warranty: '25-Year Guarantee',
+    imageUrl: 'https://images.unsplash.com/photo-1533090161767-e6ffed986c88?auto=format&fit=crop&q=80&w=800',
+    description: 'Phenolic resin bonded boiling-water-proof ply tested for 72 continuous hours in boiling water. Ideal for kitchens, wardrobes, and damp wall zones.',
+  },
+  {
+    id: 'super-matte-acrylic',
+    name: 'Anti-Fingerprint Super-Matte Acrylic',
+    category: 'Woodwork' as const,
+    durabilityTag: 'Dust & Stain Resistance',
+    tier2Benefit: 'Smooth nano-surface cleans easily with a wet cloth—no oily smudge marks.',
+    warranty: '10-Year Warranty',
+    imageUrl: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&q=80&w=800',
+    description: 'Ultra-low reflectivity Japanese matte finish that resists dust accumulation and finger smudges, giving modern living rooms a quiet luxury feel.',
+  },
+  {
+    id: 'german-soft-close',
+    name: 'Blum & Hettich German Hardware',
+    category: 'Fittings' as const,
+    durabilityTag: 'Tested for 200,000 Pulls',
+    tier2Benefit: 'Silent, smooth door closing without squeaking or loose hinge drops over time.',
+    warranty: 'Lifetime Warranty',
+    imageUrl: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&q=80&w=800',
+    description: 'Precision-engineered soft-close hinges, tandem drawer channels, and Gola profiles imported directly from Germany.',
+  },
+  {
+    id: 'quartzite-countertop',
+    name: 'Engineered Quartzite Countertops',
+    category: 'Countertop' as const,
+    durabilityTag: 'Non-Porous & Heat Resistant',
+    tier2Benefit: 'Stain-resistant against turmeric, oil, and curry spills common in Indian cooking.',
+    warranty: '15-Year Stain Warranty',
+    imageUrl: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=800',
+    description: '20mm solid engineered quartz surface with zero porosity. Scratch-resistant, hygienic, and effortless to wipe clean.',
+  },
+  {
+    id: 'exterior-acp-hpl',
+    name: 'Fundermax HPL & Weatherproof ACP',
+    category: 'Facade' as const,
+    durabilityTag: 'UV & Rain Shield',
+    tier2Benefit: 'Zero repainting required for 15+ years; maintains rich wood texture in peak UP heat.',
+    warranty: '15-Year Weather Guarantee',
+    imageUrl: 'https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&q=80&w=800',
+    description: 'Exterior architectural cladding panels that withstand extreme heat, rain, and dust storms without color fading.',
+  },
+];

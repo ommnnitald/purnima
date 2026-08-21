@@ -71,7 +71,7 @@ export const PortfolioView: React.FC<PortfolioViewProps> = ({ setActiveTab }) =>
             Your Signature of Success.
           </h1>
           <p className="font-grotesk text-base sm:text-lg text-[#49454b] mt-3 font-light max-w-2xl mx-auto leading-relaxed">
-            Real residences delivered across Raebareli, Lucknow, and NCR with our promised 45-day turnkey handover.
+            Real residences delivered across Raebareli, Lucknow, Kanpur, Ayodhya, Prayagraj, and NCR with our promised 45-day turnkey handover.
           </p>
 
           {/* Filter Pills */}
