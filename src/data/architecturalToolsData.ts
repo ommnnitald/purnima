@@ -127,7 +127,7 @@ export const LIGHTING_SCENES: LightingScene[] = [
     title: 'Living Room Lounge Ambiance',
     roomType: 'Living Hall',
     dayImg: 'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&q=80&w=1200',
-    nightImg: HERO_IMAGE,
+    nightImg: 'https://images.unsplash.com/photo-1507089947368-19c1da9775ae?auto=format&fit=crop&q=80&w=1200',
     dayDescription: 'Abundant natural daylight highlighting wood grain textures, marble reflections, and airy spatial flow.',
     nightDescription: 'Warm 3000K indirect cove LED channels, magnetic track spotlights, and subtle under-cabinet ambient glow.',
     fixturesUsed: ['COB Concealed LED Strips (3000K)', 'Magnetic Low-Voltage Track Spotlights', 'Dimmable Cove Drivers'],

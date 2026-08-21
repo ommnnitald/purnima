@@ -77,6 +77,7 @@ export const LightingVisualizer: React.FC = () => {
             <motion.img
               src={scene.dayImg}
               alt={`${scene.title} Daylight`}
+              referrerPolicy="no-referrer"
               initial={false}
               animate={{ opacity: isNightMode ? 0 : 1 }}
               transition={{ duration: 0.6 }}
@@ -87,6 +88,7 @@ export const LightingVisualizer: React.FC = () => {
             <motion.img
               src={scene.nightImg}
               alt={`${scene.title} Evening Lighting`}
+              referrerPolicy="no-referrer"
               initial={false}
               animate={{ opacity: isNightMode ? 1 : 0 }}
               transition={{ duration: 0.6 }}
