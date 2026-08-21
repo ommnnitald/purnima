@@ -5,6 +5,9 @@ import { MaterialPaletteViewer } from './MaterialPaletteViewer';
 import { FloorPlanExplorer } from './FloorPlanExplorer';
 import { LightingVisualizer } from './LightingVisualizer';
 import { ProjectTrackerModal } from './ProjectTrackerModal';
+import { DirectorVerificationCard } from './DirectorVerificationCard';
+import { ContractorComparisonMatrix } from './ContractorComparisonMatrix';
+import { WrittenTestimonials } from './WrittenTestimonials';
 import {
   HERO_IMAGE,
   EXPERTISE_INTERIORS_IMG,
@@ -354,6 +357,15 @@ export const HomeView: React.FC<HomeViewProps> = ({ setActiveTab }) => {
 
       {/* LIVE 45-DAY PROJECT MILESTONE TRACKER */}
       <ProjectTrackerModal isInlineSection={true} />
+
+      {/* PURNIMA S vs LOCAL CONTRACTOR COMPARISON MATRIX */}
+      <ContractorComparisonMatrix />
+
+      {/* DIRECTOR CORPORATE ASSURANCE & GST VERIFICATION */}
+      <DirectorVerificationCard />
+
+      {/* VERIFIED WRITTEN CLIENT PHOTO TESTIMONIALS */}
+      <WrittenTestimonials />
 
       {/* 4. THE LEGACY APPROACH */}
       <section className="py-20 bg-[#1d1625] text-white relative">
