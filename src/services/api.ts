@@ -12,9 +12,11 @@ export interface ConsultationResponseData extends ConsultationFormData {
 
 export interface BOQEstimateResult {
   id: string;
+  propertyType?: string;
   areaSqFt: number;
   qualityTier: 'Standard' | 'Premium' | 'Bespoke Heritage';
   city: string;
+  ratePerSqFt?: number;
   totalEstimatedMin: number;
   totalEstimatedMax: number;
   formattedRange: string;
@@ -327,12 +329,14 @@ export const api = {
       return result.data;
     }
 
-    const area = Number(payload.areaSqFt) || 1500;
+    const area = Math.max(200, Number(payload.areaSqFt) || 1500);
     const tier = payload.qualityTier || 'Premium';
-    const location = payload.city || 'Raebareli';
+    const propType = String(payload.propertyType || '3/4 BHK Luxury Apartment');
+    const location = String(payload.city || 'Raebareli');
 
     let baseRateMin = 1300;
     let baseRateMax = 1700;
+
     if (tier === 'Premium') {
       baseRateMin = 1850;
       baseRateMax = 2400;
@@ -341,7 +345,22 @@ export const api = {
       baseRateMax = 3800;
     }
 
-    const baseMin = area * baseRateMin;
+    let propMultiplier = 1.0;
+    if (propType.includes('Villa') || propType.includes('Kothi')) {
+      propMultiplier = 1.20;
+    } else if (propType.includes('Ancestral') || propType.includes('Facelift')) {
+      propMultiplier = 0.90;
+    } else if (propType.includes('Modular Kitchen')) {
+      propMultiplier = 0.50;
+    } else if (propType.includes('Commercial') || propType.includes('Studio')) {
+      propMultiplier = 0.85;
+    }
+
+    const effectiveRateMin = Math.round(baseRateMin * propMultiplier);
+    const effectiveRateMax = Math.round(baseRateMax * propMultiplier);
+
+    const baseMin = area * effectiveRateMin;
+
     const civilCost = Math.round(baseMin * 0.22);
     const woodworkCost = Math.round(baseMin * 0.38);
     const modularKitchenCost = payload.includeModularKitchen !== false ? Math.round(baseMin * 0.20) : 0;
@@ -350,16 +369,40 @@ export const api = {
     const facadeCost = payload.includeFacade ? Math.round(baseMin * 0.18) : 0;
 
     const totalMin = civilCost + woodworkCost + modularKitchenCost + lightingCost + hardwareCost + facadeCost;
-    const totalMax = Math.round(totalMin * 1.25);
+    const totalMax = Math.round(totalMin * (effectiveRateMax / effectiveRateMin));
+
+    const formatCurrency = (amt: number) => {
+      if (amt >= 10000000) return `₹${(amt / 10000000).toFixed(2)} Cr`;
+      if (amt >= 100000) {
+        const val = amt / 100000;
+        return `₹${val % 1 === 0 ? val.toFixed(0) : val.toFixed(2)} Lakhs`;
+      }
+      return `₹${amt.toLocaleString('en-IN')}`;
+    };
+
+    const formattedRange = `${formatCurrency(totalMin)} – ${formatCurrency(totalMax)}`;
+
+    let coreMaterial = 'BWP Grade Marine Ply & anti-fingerprint laminates';
+    let fittings = 'Blum / Hettich German Gola channels & soft-close hinges';
+
+    if (tier === 'Standard') {
+      coreMaterial = 'Commercial HDHMR Board & 1mm Gloss Laminates';
+      fittings = 'Ebco / Godrej Soft-Close Telescopic Hardware';
+    } else if (tier === 'Bespoke Heritage') {
+      coreMaterial = 'Teak Wood Joinery, HDHMR Cores & Anti-scratch Acrylics';
+      fittings = 'Blum Legrabox, Servo-Drive & Aventos Lift-Up Systems';
+    }
 
     return {
       id: `EST-${Date.now()}`,
+      propertyType: propType,
       areaSqFt: area,
       qualityTier: tier,
       city: location,
+      ratePerSqFt: effectiveRateMin,
       totalEstimatedMin: totalMin,
       totalEstimatedMax: totalMax,
-      formattedRange: `₹${(totalMin / 100000).toFixed(1)}L – ₹${(totalMax / 100000).toFixed(1)}L`,
+      formattedRange,
       guaranteedTimelineDays: 45,
       breakdown: {
         civilAndFlooring: civilCost,
@@ -370,9 +413,9 @@ export const api = {
         exteriorFacade: facadeCost,
       },
       specifications: {
-        coreMaterial: tier === 'Standard' ? 'Commercial HDHMR Ply' : 'BWP Grade Marine Ply & anti-fingerprint laminates',
-        fittings: tier === 'Standard' ? 'Standard soft-close hardware' : 'Blum / Hettich German Gola channels',
-        guarantee: '45-Day Handover with direct director inspection',
+        coreMaterial,
+        fittings,
+        guarantee: '45-Day Handover Protocol with Direct Director Inspection',
       },
     };
   },

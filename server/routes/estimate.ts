@@ -3,16 +3,26 @@ import { db } from '../db';
 
 const router = Router();
 
-// POST /api/estimate & POST /api/estimate/calculate - Calculate BOQ breakdown & dynamic budget estimate
+function formatIndianCurrency(amount: number): string {
+  if (amount >= 10000000) {
+    return `₹${(amount / 10000000).toFixed(2)} Cr`;
+  } else if (amount >= 100000) {
+    const val = amount / 100000;
+    return `₹${val % 1 === 0 ? val.toFixed(0) : val.toFixed(2)} Lakhs`;
+  } else {
+    return `₹${amount.toLocaleString('en-IN')}`;
+  }
+}
+
 const calculateHandler = (req: Request, res: Response) => {
   try {
     const { propertyType, areaSqFt, qualityTier, city, includeFacade, includeModularKitchen } = req.body;
 
-    const area = Number(areaSqFt) || 1500;
+    const area = Math.max(200, Number(areaSqFt) || 1500);
     const tier = (qualityTier || 'Premium') as 'Standard' | 'Premium' | 'Bespoke Heritage';
-    const location = city || 'Raebareli';
+    const propType = String(propertyType || '3/4 BHK Luxury Apartment');
+    const location = String(city || 'Raebareli');
 
-    // Base rates per sq ft according to tier
     let baseRateMin = 1300;
     let baseRateMax = 1700;
 
@@ -24,10 +34,22 @@ const calculateHandler = (req: Request, res: Response) => {
       baseRateMax = 3800;
     }
 
-    const baseMin = area * baseRateMin;
-    const baseMax = area * baseRateMax;
+    let propMultiplier = 1.0;
+    if (propType.includes('Villa') || propType.includes('Kothi')) {
+      propMultiplier = 1.20;
+    } else if (propType.includes('Ancestral') || propType.includes('Facelift')) {
+      propMultiplier = 0.90;
+    } else if (propType.includes('Modular Kitchen')) {
+      propMultiplier = 0.50;
+    } else if (propType.includes('Commercial') || propType.includes('Studio')) {
+      propMultiplier = 0.85;
+    }
 
-    // Component Breakdown Percentages
+    const effectiveRateMin = Math.round(baseRateMin * propMultiplier);
+    const effectiveRateMax = Math.round(baseRateMax * propMultiplier);
+
+    const baseMin = area * effectiveRateMin;
+
     const civilCost = Math.round(baseMin * 0.22);
     const woodworkCost = Math.round(baseMin * 0.38);
     const modularKitchenCost = includeModularKitchen !== false ? Math.round(baseMin * 0.20) : 0;
@@ -36,10 +58,25 @@ const calculateHandler = (req: Request, res: Response) => {
     const facadeCost = includeFacade ? Math.round(baseMin * 0.18) : 0;
 
     const totalMin = civilCost + woodworkCost + modularKitchenCost + lightingCost + hardwareCost + facadeCost;
-    const totalMax = Math.round(totalMin * 1.25);
+    const totalMax = Math.round(totalMin * (effectiveRateMax / effectiveRateMin));
+
+    const formattedMin = formatIndianCurrency(totalMin);
+    const formattedMax = formatIndianCurrency(totalMax);
+    const formattedRange = `${formattedMin} – ${formattedMax}`;
+
+    let coreMaterial = 'BWP Grade Marine Ply & anti-fingerprint laminates';
+    let fittings = 'Blum / Hettich German Gola channels & soft-close hinges';
+
+    if (tier === 'Standard') {
+      coreMaterial = 'Commercial HDHMR Board & 1mm Gloss Laminates';
+      fittings = 'Ebco / Godrej Soft-Close Telescopic Hardware';
+    } else if (tier === 'Bespoke Heritage') {
+      coreMaterial = 'Teak Wood Joinery, HDHMR Cores & Anti-scratch Acrylics';
+      fittings = 'Blum Legrabox, Servo-Drive & Aventos Lift-Up Systems';
+    }
 
     const savedRecord = db.saveEstimate({
-      propertyType: propertyType || '3/4 BHK Luxury Apartment',
+      propertyType: propType,
       areaSqFt: area,
       qualityTier: tier,
       city: location,
@@ -57,12 +94,14 @@ const calculateHandler = (req: Request, res: Response) => {
       success: true,
       data: {
         id: savedRecord.id,
+        propertyType: propType,
         areaSqFt: area,
         qualityTier: tier,
         city: location,
+        ratePerSqFt: effectiveRateMin,
         totalEstimatedMin: totalMin,
         totalEstimatedMax: totalMax,
-        formattedRange: `₹${(totalMin / 100000).toFixed(1)}L – ₹${(totalMax / 100000).toFixed(1)}L`,
+        formattedRange,
         guaranteedTimelineDays: 45,
         breakdown: {
           civilAndFlooring: civilCost,
@@ -73,9 +112,9 @@ const calculateHandler = (req: Request, res: Response) => {
           exteriorFacade: facadeCost,
         },
         specifications: {
-          coreMaterial: tier === 'Standard' ? 'Commercial HDHMR Ply' : 'BWP Grade Marine Ply & anti-fingerprint laminates',
-          fittings: tier === 'Standard' ? 'Standard soft-close hardware' : 'Blum / Hettich German Gola channels',
-          guarantee: '45-Day Handover with direct director inspection',
+          coreMaterial,
+          fittings,
+          guarantee: '45-Day Handover Protocol with Direct Director Inspection',
         },
       },
     });
@@ -87,7 +126,6 @@ const calculateHandler = (req: Request, res: Response) => {
 router.post('/', calculateHandler);
 router.post('/calculate', calculateHandler);
 
-// GET /api/estimate - Get recent calculations (Admin/Analytics)
 router.get('/', (req: Request, res: Response) => {
   try {
     const estimates = db.getEstimates();

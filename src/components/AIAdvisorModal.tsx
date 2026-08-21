@@ -63,14 +63,21 @@ export const AIAdvisorModal: React.FC<AIAdvisorModalProps> = ({ isOpen, onClose,
     }
   }, [propertyType, areaSqFt, calcTier, city, includeFacade, includeKitchen]);
 
-  // Run initial calculation when modal opens or when tab switches to calculator
+  // Run calculation reactively whenever parameters update
   useEffect(() => {
-    if (isOpen && (tab === 'calculator' || !calcResult)) {
+    if (isOpen && tab === 'calculator') {
       runBoqCalculation();
     }
-  }, [isOpen, tab, runBoqCalculation, calcResult]);
+  }, [isOpen, tab, propertyType, areaSqFt, calcTier, city, includeFacade, includeKitchen, runBoqCalculation]);
 
   if (!isOpen) return null;
+
+  const formatCostBadge = (amt: number) => {
+    if (!amt || amt <= 0) return <span className="text-[#49454b]/60 italic font-normal">Not Included</span>;
+    if (amt >= 10000000) return `₹${(amt / 10000000).toFixed(2)} Cr`;
+    if (amt >= 100000) return `₹${(amt / 100000).toFixed(2)} Lakhs`;
+    return `₹${amt.toLocaleString('en-IN')}`;
+  };
 
   const handleFetchAiAdvice = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -375,29 +382,39 @@ Handover: ${aiResult.estimatedTimelineDays} Days`;
               <div className="space-y-6">
                 <div className="bg-[#F2EFE9] rounded-2xl p-5 sm:p-6 border border-[#cbc4cc]/50 space-y-5">
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                    <div className="sm:col-span-2">
+                    <div>
                       <label className="block text-xs font-grotesk uppercase font-semibold text-[#1d1625] mb-1.5">
-                        Select Material & Quality Tier
+                        Property Typology
                       </label>
-                      <div className="grid grid-cols-3 gap-2">
-                        {(['Standard', 'Premium', 'Bespoke Heritage'] as const).map((tierItem) => (
-                          <button
-                            key={tierItem}
-                            type="button"
-                            onClick={() => {
-                              setCalcTier(tierItem);
-                              setTimeout(runBoqCalculation, 50);
-                            }}
-                            className={`py-2.5 px-3 rounded-xl text-xs font-grotesk transition-all cursor-pointer border text-center ${
-                              calcTier === tierItem
-                                ? 'bg-[#1d1625] text-[#D4AF37] border-[#1d1625] font-semibold shadow-md'
-                                : 'bg-white text-[#49454b] border-[#cbc4cc]/40 hover:bg-[#e7e3dc]'
-                            }`}
-                          >
-                            {tierItem}
-                          </button>
-                        ))}
-                      </div>
+                      <select
+                        id="boq-property-select"
+                        value={propertyType}
+                        onChange={(e) => setPropertyType(e.target.value)}
+                        className="w-full px-3.5 py-2.5 rounded-xl bg-white border border-[#cbc4cc]/50 text-xs font-grotesk text-[#1d1625] focus:outline-none focus:border-[#1d1625]"
+                      >
+                        <option value="3/4 BHK Luxury Apartment">3/4 BHK Luxury Apartment</option>
+                        <option value="Independent Villa / Kothi">Independent Villa / Kothi</option>
+                        <option value="Ancestral Bungalow Facelift">Ancestral Bungalow Facelift</option>
+                        <option value="Modular Kitchen & Dining">Modular Kitchen & Dining</option>
+                        <option value="Commercial / Executive Studio">Commercial / Executive Studio</option>
+                      </select>
+                    </div>
+
+                    <div>
+                      <label className="block text-xs font-grotesk uppercase font-semibold text-[#1d1625] mb-1.5">
+                        City Location
+                      </label>
+                      <select
+                        id="boq-city-select"
+                        value={city}
+                        onChange={(e) => setCity(e.target.value)}
+                        className="w-full px-3.5 py-2.5 rounded-xl bg-white border border-[#cbc4cc]/50 text-xs font-grotesk text-[#1d1625] focus:outline-none focus:border-[#1d1625]"
+                      >
+                        <option value="Raebareli">Raebareli</option>
+                        <option value="Lucknow">Lucknow</option>
+                        <option value="Kanpur">Kanpur</option>
+                        <option value="Noida / NCR">Noida / NCR</option>
+                      </select>
                     </div>
 
                     <div>
@@ -408,17 +425,38 @@ Handover: ${aiResult.estimatedTimelineDays} Days`;
                         <span className="text-xs font-grotesk font-bold text-[#D4AF37]">{areaSqFt} Sq.Ft</span>
                       </div>
                       <input
+                        id="boq-area-slider"
                         type="range"
-                        min={500}
+                        min={300}
                         max={8000}
-                        step={100}
+                        step={50}
                         value={areaSqFt}
-                        onChange={(e) => {
-                          setAreaSqFt(Number(e.target.value));
-                          setTimeout(runBoqCalculation, 50);
-                        }}
+                        onChange={(e) => setAreaSqFt(Number(e.target.value))}
                         className="w-full accent-[#1d1625] cursor-pointer mt-2"
                       />
+                    </div>
+                  </div>
+
+                  <div>
+                    <label className="block text-xs font-grotesk uppercase font-semibold text-[#1d1625] mb-1.5">
+                      Material & Quality Tier
+                    </label>
+                    <div className="grid grid-cols-3 gap-2">
+                      {(['Standard', 'Premium', 'Bespoke Heritage'] as const).map((tierItem) => (
+                        <button
+                          key={tierItem}
+                          id={`boq-tier-${tierItem.toLowerCase().replace(/\s+/g, '-')}`}
+                          type="button"
+                          onClick={() => setCalcTier(tierItem)}
+                          className={`py-2.5 px-3 rounded-xl text-xs font-grotesk transition-all cursor-pointer border text-center ${
+                            calcTier === tierItem
+                              ? 'bg-[#1d1625] text-[#D4AF37] border-[#1d1625] font-semibold shadow-md'
+                              : 'bg-white text-[#49454b] border-[#cbc4cc]/40 hover:bg-[#e7e3dc]'
+                          }`}
+                        >
+                          {tierItem}
+                        </button>
+                      ))}
                     </div>
                   </div>
 
@@ -426,24 +464,20 @@ Handover: ${aiResult.estimatedTimelineDays} Days`;
                     <div className="flex flex-wrap gap-5">
                       <label className="inline-flex items-center gap-2 text-xs font-grotesk cursor-pointer">
                         <input
+                          id="boq-include-kitchen-check"
                           type="checkbox"
                           checked={includeKitchen}
-                          onChange={(e) => {
-                            setIncludeKitchen(e.target.checked);
-                            setTimeout(runBoqCalculation, 50);
-                          }}
+                          onChange={(e) => setIncludeKitchen(e.target.checked)}
                           className="rounded border-gray-300 text-[#1d1625] focus:ring-0 w-4 h-4 cursor-pointer"
                         />
                         <span className="font-medium text-[#1d1625]">Modular Gola Kitchen</span>
                       </label>
                       <label className="inline-flex items-center gap-2 text-xs font-grotesk cursor-pointer">
                         <input
+                          id="boq-include-facade-check"
                           type="checkbox"
                           checked={includeFacade}
-                          onChange={(e) => {
-                            setIncludeFacade(e.target.checked);
-                            setTimeout(runBoqCalculation, 50);
-                          }}
+                          onChange={(e) => setIncludeFacade(e.target.checked)}
                           className="rounded border-gray-300 text-[#1d1625] focus:ring-0 w-4 h-4 cursor-pointer"
                         />
                         <span className="font-medium text-[#1d1625]">Exterior Facade / ACP Cladding</span>
@@ -478,12 +512,17 @@ Handover: ${aiResult.estimatedTimelineDays} Days`;
                     <div className="text-center bg-[#1d1625] text-white rounded-2xl p-6 border border-[#D4AF37]/40 space-y-2 relative overflow-hidden">
                       <div className="absolute -right-8 -bottom-8 w-32 h-32 bg-[#D4AF37]/10 rounded-full blur-2xl" />
                       <span className="text-xs font-grotesk uppercase font-semibold text-[#D4AF37] tracking-wider">
-                        Turnkey Cost Estimate ({calcResult.qualityTier} Tier • {calcResult.areaSqFt} Sq.Ft)
+                        Turnkey Cost Estimate ({calcResult.propertyType || propertyType} • {calcResult.qualityTier} Tier • {calcResult.areaSqFt} Sq.Ft • {calcResult.city})
                       </span>
                       <h3 className="font-garamond text-4xl sm:text-5xl font-normal text-white">
                         {calcResult.formattedRange}
                       </h3>
-                      <p className="font-grotesk text-xs text-[#cbc4cc] max-w-lg mx-auto">
+                      {calcResult.ratePerSqFt && (
+                        <div className="inline-block px-3 py-1 rounded-full bg-white/10 text-xs font-grotesk text-[#cbc4cc] font-medium">
+                          Estimated Rate: ₹{calcResult.ratePerSqFt.toLocaleString('en-IN')}/sq.ft base
+                        </div>
+                      )}
+                      <p className="font-grotesk text-xs text-[#cbc4cc] max-w-lg mx-auto pt-1">
                         Includes material supply, site installation, direct director supervision, and 45-day handover warranty.
                       </p>
                     </div>
@@ -498,37 +537,37 @@ Handover: ${aiResult.estimatedTimelineDays} Days`;
                         <div className="p-3.5 bg-[#F2EFE9] rounded-xl border border-[#cbc4cc]/40">
                           <div className="text-[#49454b]">Civil & Flooring</div>
                           <div className="font-semibold text-[#1d1625] text-sm mt-0.5">
-                            ₹{(calcResult.breakdown.civilAndFlooring / 100000).toFixed(2)} Lakhs
+                            {formatCostBadge(calcResult.breakdown.civilAndFlooring)}
                           </div>
                         </div>
                         <div className="p-3.5 bg-[#F2EFE9] rounded-xl border border-[#cbc4cc]/40">
                           <div className="text-[#49454b]">Custom Woodwork</div>
                           <div className="font-semibold text-[#1d1625] text-sm mt-0.5">
-                            ₹{(calcResult.breakdown.customWoodwork / 100000).toFixed(2)} Lakhs
+                            {formatCostBadge(calcResult.breakdown.customWoodwork)}
                           </div>
                         </div>
                         <div className="p-3.5 bg-[#F2EFE9] rounded-xl border border-[#cbc4cc]/40">
                           <div className="text-[#49454b]">Modular Kitchen</div>
                           <div className="font-semibold text-[#1d1625] text-sm mt-0.5">
-                            ₹{(calcResult.breakdown.modularKitchen / 100000).toFixed(2)} Lakhs
+                            {formatCostBadge(calcResult.breakdown.modularKitchen)}
                           </div>
                         </div>
                         <div className="p-3.5 bg-[#F2EFE9] rounded-xl border border-[#cbc4cc]/40">
                           <div className="text-[#49454b]">Architectural Lighting</div>
                           <div className="font-semibold text-[#1d1625] text-sm mt-0.5">
-                            ₹{(calcResult.breakdown.architecturalLighting / 100000).toFixed(2)} Lakhs
+                            {formatCostBadge(calcResult.breakdown.architecturalLighting)}
                           </div>
                         </div>
                         <div className="p-3.5 bg-[#F2EFE9] rounded-xl border border-[#cbc4cc]/40">
                           <div className="text-[#49454b]">Hardware Fittings</div>
                           <div className="font-semibold text-[#1d1625] text-sm mt-0.5">
-                            ₹{(calcResult.breakdown.hardwareAndAccessories / 100000).toFixed(2)} Lakhs
+                            {formatCostBadge(calcResult.breakdown.hardwareAndAccessories)}
                           </div>
                         </div>
                         <div className="p-3.5 bg-[#F2EFE9] rounded-xl border border-[#cbc4cc]/40">
                           <div className="text-[#49454b]">Exterior Facade</div>
                           <div className="font-semibold text-[#1d1625] text-sm mt-0.5">
-                            ₹{(calcResult.breakdown.exteriorFacade / 100000).toFixed(2)} Lakhs
+                            {formatCostBadge(calcResult.breakdown.exteriorFacade)}
                           </div>
                         </div>
                       </div>
