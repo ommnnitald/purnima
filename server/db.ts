@@ -11,6 +11,8 @@ export interface ConsultationRecord extends ConsultationFormData {
   createdAt: string;
   updatedAt: string;
   directorNotes?: string;
+  emailDeliveryStatus?: 'sent' | 'failed' | 'pending';
+  emailError?: string;
 }
 
 export interface EstimateRecord {
@@ -67,6 +69,7 @@ const initialConsultations: ConsultationRecord[] = [
     id: 'consult-1',
     referenceCode: 'PS-849201',
     fullName: 'Dr. R. K. Verma',
+    email: 'rkverma@example.com',
     contact: '+91 94150 12345',
     city: 'Raebareli',
     propertyType: 'Independent Villa / Kothi',
@@ -79,11 +82,13 @@ const initialConsultations: ConsultationRecord[] = [
     createdAt: '2026-07-01T10:30:00.000Z',
     updatedAt: '2026-07-15T16:00:00.000Z',
     directorNotes: 'Project completed in 42 days. Client praised direct stakeholder communication.',
+    emailDeliveryStatus: 'sent',
   },
   {
     id: 'consult-2',
     referenceCode: 'PS-391024',
     fullName: 'Ananya Srivastava',
+    email: 'ananya@example.com',
     contact: '+91 98390 67890',
     city: 'Lucknow',
     propertyType: '3/4 BHK Luxury Apartment',
@@ -96,6 +101,7 @@ const initialConsultations: ConsultationRecord[] = [
     createdAt: '2026-08-15T14:15:00.000Z',
     updatedAt: '2026-08-16T09:00:00.000Z',
     directorNotes: 'Site visit scheduled for Gomti Nagar penthouse.',
+    emailDeliveryStatus: 'sent',
   },
 ];
 

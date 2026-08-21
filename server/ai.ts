@@ -43,10 +43,9 @@ export async function generateInteriorAdvice(
   const style = req.preferredStyle || 'Quiet Luxury & Japandi Minimal';
   const userPrompt = req.prompt || '';
 
-  // If Gemini API is configured, use Gemini 2.5 Flash
+  // If Gemini API is configured, try valid Gemini models (gemini-2.0-flash, gemini-1.5-flash)
   if (aiInstance) {
-    try {
-      const promptText = `You are the lead architectural & interior consultant for Purnima S Interiors & Exteriors Private Limited, a premier architectural firm serving UP (Raebareli, Lucknow, Kanpur, Noida).
+    const promptText = `You are the lead architectural & interior consultant for Purnima S Interiors & Exteriors Private Limited, a premier architectural firm serving UP (Raebareli, Lucknow, Kanpur, Noida).
 Analyze the client request and respond strictly in JSON format with no markdown wrappers or backticks.
 
 Client Details:
@@ -71,27 +70,30 @@ Required JSON structure:
   "directorTip": "string"
 }`;
 
-      const response = await aiInstance.models.generateContent({
-        model: 'gemini-2.5-flash',
-        contents: promptText,
-      });
+    const modelsToTry = ['gemini-2.0-flash', 'gemini-1.5-flash'];
+    for (const model of modelsToTry) {
+      try {
+        const response = await aiInstance.models.generateContent({
+          model,
+          contents: promptText,
+        });
 
-      const responseText = response.text || '';
-      // Clean possible JSON backticks
-      const cleanJson = responseText.replace(/```json/g, '').replace(/```/g, '').trim();
-      const parsed = JSON.parse(cleanJson);
+        const responseText = response.text || '';
+        const cleanJson = responseText.replace(/```json/g, '').replace(/```/g, '').trim();
+        const parsed = JSON.parse(cleanJson);
 
-      return {
-        themeTitle: parsed.themeTitle || `${style} for ${propertyType}`,
-        summary: parsed.summary || `Personalized design framework for your ${areaSqFt} sq.ft residence in ${city}.`,
-        materialPalette: parsed.materialPalette || [],
-        lightingPlan: parsed.lightingPlan || 'Warm 3000K indirect LED cove luminescence with magnetic track accents.',
-        estimatedTimelineDays: parsed.estimatedTimelineDays || 45,
-        directorTip: parsed.directorTip || 'Our 45-day guaranteed handover includes daily site reports managed directly by directors Sudhanshu & Purnima Sonkar.',
-        isAiGenerated: true,
-      };
-    } catch (err) {
-      console.warn('Gemini API call failed, reverting to intelligent rule-based engine:', err);
+        return {
+          themeTitle: parsed.themeTitle || `${style} for ${propertyType}`,
+          summary: parsed.summary || `Personalized design framework for your ${areaSqFt} sq.ft residence in ${city}.`,
+          materialPalette: parsed.materialPalette || [],
+          lightingPlan: parsed.lightingPlan || 'Warm 3000K indirect LED cove luminescence with magnetic track accents.',
+          estimatedTimelineDays: parsed.estimatedTimelineDays || 45,
+          directorTip: parsed.directorTip || 'Our 45-day guaranteed handover includes daily site reports managed directly by directors Sudhanshu & Purnima Sonkar.',
+          isAiGenerated: true,
+        };
+      } catch (err: any) {
+        console.warn(`Gemini API call for model ${model} failed:`, err?.message || err);
+      }
     }
   }
 

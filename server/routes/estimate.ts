@@ -3,8 +3,8 @@ import { db } from '../db';
 
 const router = Router();
 
-// POST /api/estimate - Calculate BOQ breakdown & dynamic budget estimate
-router.post('/', (req: Request, res: Response) => {
+// POST /api/estimate & POST /api/estimate/calculate - Calculate BOQ breakdown & dynamic budget estimate
+const calculateHandler = (req: Request, res: Response) => {
   try {
     const { propertyType, areaSqFt, qualityTier, city, includeFacade, includeModularKitchen } = req.body;
 
@@ -82,7 +82,10 @@ router.post('/', (req: Request, res: Response) => {
   } catch (error) {
     res.status(500).json({ success: false, message: 'Failed to calculate estimate', error });
   }
-});
+};
+
+router.post('/', calculateHandler);
+router.post('/calculate', calculateHandler);
 
 // GET /api/estimate - Get recent calculations (Admin/Analytics)
 router.get('/', (req: Request, res: Response) => {

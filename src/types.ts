@@ -33,6 +33,7 @@ export interface DesignService {
 
 export interface ConsultationFormData {
   fullName: string;
+  email: string;
   contact: string;
   city: string;
   propertyType: string;

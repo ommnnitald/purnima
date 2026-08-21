@@ -54,12 +54,16 @@ export const ConsultationSuccessModal: React.FC<ConsultationSuccessModalProps> =
               Thank You, {formData.fullName}
             </h2>
             <p className="font-grotesk text-sm sm:text-base text-[#49454b] font-light max-w-lg mx-auto">
-              Your request has been routed directly to director <strong>Sudhanshu Sonkar / Purnima Sonkar</strong>. We will reach out to <strong>{formData.contact}</strong> within 24 hours.
+              Your request has been routed directly to director <strong>Sudhanshu Sonkar / Purnima Sonkar</strong>. We will reach out to <strong>{formData.contact}</strong> within 24 hours. A confirmation email has been dispatched to <strong>{formData.email}</strong>.
             </p>
           </div>
 
           {/* Appointment Summary Box */}
           <div className="bg-[#F2EFE9] rounded-2xl p-6 border border-[#cbc4cc]/50 space-y-3 mb-8 text-xs sm:text-sm font-grotesk">
+            <div className="flex justify-between items-center pb-2 border-b border-[#cbc4cc]/40">
+              <span className="text-[#49454b]">Email Address:</span>
+              <span className="font-semibold text-[#1d1625]">{formData.email}</span>
+            </div>
             <div className="flex justify-between items-center pb-2 border-b border-[#cbc4cc]/40">
               <span className="text-[#49454b]">Property Type:</span>
               <span className="font-semibold text-[#1d1625]">{formData.propertyType}</span>

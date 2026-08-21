@@ -22,6 +22,7 @@ interface ConsultationViewProps {
 export const ConsultationView: React.FC<ConsultationViewProps> = ({ setActiveTab }) => {
   const [formData, setFormData] = useState<ConsultationFormData>({
     fullName: '',
+    email: '',
     contact: '',
     city: 'Raebareli',
     propertyType: '3/4 BHK Luxury Apartment',
@@ -53,7 +54,10 @@ export const ConsultationView: React.FC<ConsultationViewProps> = ({ setActiveTab
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!formData.fullName || !formData.contact) return;
+    if (!formData.fullName || !formData.email || !formData.contact) {
+      setSubmitError('Please fill in all required fields (Full Name, Email, Contact).');
+      return;
+    }
     setIsSubmitting(true);
     setSubmitError(null);
     try {
@@ -64,11 +68,7 @@ export const ConsultationView: React.FC<ConsultationViewProps> = ({ setActiveTab
       setSubmittedData(response);
     } catch (err: any) {
       console.error('API submission failed:', err);
-      // Fallback display if backend is offline
-      setSubmittedData({
-        ...formData,
-        referenceCode: `PS-${Math.floor(100000 + Math.random() * 900000)}`,
-      });
+      setSubmitError(err.message || 'Failed to submit request. Please try again.');
     } finally {
       setIsSubmitting(false);
     }
@@ -134,6 +134,23 @@ export const ConsultationView: React.FC<ConsultationViewProps> = ({ setActiveTab
 
                   <div>
                     <label className="block text-xs font-grotesk uppercase tracking-wider font-semibold text-[#1d1625] mb-1.5">
+                      Email Address *
+                    </label>
+                    <input
+                      id="consult-email-input"
+                      type="email"
+                      required
+                      placeholder="e.g. vikram@example.com"
+                      value={formData.email}
+                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                      className="w-full px-4 py-3 rounded-xl bg-white border border-[#cbc4cc]/50 text-sm font-grotesk text-[#1d1625] focus:outline-none focus:border-[#D4AF37] transition-colors"
+                    />
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                  <div>
+                    <label className="block text-xs font-grotesk uppercase tracking-wider font-semibold text-[#1d1625] mb-1.5">
                       Contact / WhatsApp *
                     </label>
                     <input
@@ -146,9 +163,7 @@ export const ConsultationView: React.FC<ConsultationViewProps> = ({ setActiveTab
                       className="w-full px-4 py-3 rounded-xl bg-white border border-[#cbc4cc]/50 text-sm font-grotesk text-[#1d1625] focus:outline-none focus:border-[#D4AF37] transition-colors"
                     />
                   </div>
-                </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-xs font-grotesk uppercase tracking-wider font-semibold text-[#1d1625] mb-1.5">
                       City / Project Location
