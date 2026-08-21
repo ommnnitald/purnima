@@ -84,7 +84,7 @@ export const FLOOR_PLANS_DATA: FloorPlanOption[] = [
         xPercent: 25,
         yPercent: 75,
         roomArea: '180 Sq.Ft',
-        renderUrl: 'https://lh3.googleusercontent.com/aida/AP1WRLvslr2DgQQCY8t3d2yuPLqU0YcCNWIBC72qRN_DOcW_xl1hCDC4Qsls2HwsAaLYiqvzxJUZw1d2Gd68yhEi7F4_4guqSvgpQMhjxZ_Z_9wrf1z_vulgbcrj0sj69UAiHzu8fG2rBeAOaayiWdPwO770GqM4hhJuCqI3Pkw0vnups3vBXZ6pfQdDgc2GZxDcM2DaI_u-gKo95hCFnuANvohzouRQZ7wTZV_xgLHjFWoG1egGE72spJ3PO47J',
+        renderUrl: 'https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&q=80&w=1000',
         description: 'Handleless Gola profile culinary zone with anti-fingerprint super-matte shutters and 20mm quartz countertop.',
         keySpecs: ['German Soft-Close Drawers', 'Turmeric-Proof Quartz Surface', 'Retractable Appliance Pantry'],
       },

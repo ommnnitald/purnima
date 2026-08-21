@@ -1,19 +1,19 @@
 import { PortfolioProject, DesignService } from '../types';
 
 export const HERO_IMAGE =
-  'https://lh3.googleusercontent.com/aida/AP1WRLsy3pQFRDTIUvkAgEmAI9gxAcannEAZCyyavrNHCCHYPNLMAJbhldiZEPoyZrypMovKf7hlXVqg14hodstGItjy1BVddZenZdk65pcBwjTByoWgiE7Xw_SfxHPK3XNsIrBa8lQeekuGpKs2l4nBsJEysiRRV4GspMjU372ikiRq_WCIuqOHbi_Vgdt6P5-_D5UMdVxqA8NdS1X3fNdt8WozIib9jH48ccLnT_o6JMzo46wQ8RB-uHL-hvmK';
+  'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&q=80&w=1600';
 
 export const EXPERTISE_INTERIORS_IMG =
-  'https://lh3.googleusercontent.com/aida/AP1WRLvIDO4Zp_vjYncDBBjIlgNUBY9bCDNznBUZ6Ypi6PZ3KTQI9wtqVCrCwsj3OVEv5Keoa3UBKoIrMm6EsMuwLubngHHVVSmAZrnAtcy-TxsuwpRvrDPP_00zeB_mYsH59hyY85Pb_tX4c_eni22KM4oIV7TIY3WN8ZyXHYYwmtkxTnOr0g3DSkN8_rAFbSzMO-MP-yO9DBoDl8JEkB1L05zzgy6G1Na5SItAqynjw0JAevGmOrkagfeRG74';
+  'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&q=80&w=1200';
 
 export const EXPERTISE_EXTERIORS_IMG =
-  'https://lh3.googleusercontent.com/aida-public/AB6AXuCb1greLS2efzrKQ79JU-lhRX5_PbLUSOW8Z-q_ze2VhVBJ7q_0Qw4UbURMEoCDPyzcdBCoYIyJJxKA44PZNHoaNJvKeFjR_dk_S16jW7DpmDHsLERs_xFojLcEb7EieQN2BN-yEaIC4gmsk9znNBJTUedGfJ3rcNRMXXqi15n6Fk4wDLZJgUThfdVBzhWtbb45kPDzduVq0ODW5nYfTWxfPamOxCh5pMKhrDI-68pvgGUDTMA-e0_i5g';
+  'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=1200';
 
 export const LEGACY_BEDROOM_IMG =
-  'https://lh3.googleusercontent.com/aida-public/AB6AXuCRVuVmEs_bB4f-dBnUtuiQ-yhYTgOo31id_WMA9q-jez8uRZ_5RjKpF4a9z6NhqdGv_dSYsvlCWuNU_at5O8ezc0vFekSPWR5eWHv9q-wFMZm_xbimKa6B5vEVAj87ZkJ_Zdz8F4w8Per8ikGnq2L1MRlGV6cXca-Y1k5wL4Bhe9H5uYH94J1SWk19uNFtifcKTZpDbR_zPzqJhqlHsJg11mg4HekSVNrA7d9Rv7oJ3WRQxP80lfu3qg';
+  'https://images.unsplash.com/photo-1616594039964-ae9021a400a0?auto=format&fit=crop&q=80&w=1200';
 
 export const CONSULTATION_BG_IMG =
-  'https://lh3.googleusercontent.com/aida-public/AB6AXuAcB4E5Q1iLHfUo8rgDVhCwN4zApqavzvw-9VrVQKNiFAtapmr1SOZoMbHOsd_JZQEOT20DOdYBrTd4HXbyd6WIl-0d03aonEPVbCfjPhMLX_AnVKL-gsq3c6eJG5H8eqgo9fXbInLyCo67c7Ox52MgKmhKfq2QCqf-l5RDnUC7QUFxwtQ6KVP_pLjC_JqfKWtgtu689cCvSCeur06N7Wjv8bjAxB7CbIwc2Pwof-CxMN93L1w3-a3sCQ';
+  'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=1600';
 
 export const SERVICES_DATA: DesignService[] = [
   {
@@ -25,7 +25,7 @@ export const SERVICES_DATA: DesignService[] = [
       'State-of-the-art culinary spaces featuring Anti-fingerprint Super-Matte Finishes and sleek Gola Profiles, specifically tailored for the maintenance-free needs of Tier 2 city homeowners.',
     features: ['Anti-fingerprint Finishes', 'Gola Profiles', 'Maintenance-Free Design'],
     imageUrl:
-      'https://lh3.googleusercontent.com/aida/AP1WRLvslr2DgQQCY8t3d2yuPLqU0YcCNWIBC72qRN_DOcW_xl1hCDC4Qsls2HwsAaLYiqvzxJUZw1d2Gd68yhEi7F4_4guqSvgpQMhjxZ_Z_9wrf1z_vulgbcrj0sj69UAiHzu8fG2rBeAOaayiWdPwO770GqM4hhJuCqI3Pkw0vnups3vBXZ6pfQdDgc2GZxDcM2DaI_u-gKo95hCFnuANvohzouRQZ7wTZV_xgLHjFWoG1egGE72spJ3PO47J',
+      'https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&q=80&w=1000',
     ctaText: 'Explore Modular',
     targetTab: 'modular',
     offsetMargin: false,
@@ -39,7 +39,7 @@ export const SERVICES_DATA: DesignService[] = [
       'Transform your living areas with a focus on "Quiet Luxury" and "Japandi Minimalism", fusing local comfort with global style for a truly serene environment.',
     features: ['Quiet Luxury Aesthetic', 'Japandi Minimalism', 'Global Style, Local Comfort'],
     imageUrl:
-      'https://lh3.googleusercontent.com/aida/AP1WRLvvlmH5vXhwP1wKtOpHuR_AExvTM-GzhDcFBCgby4WAuTNql_pLBp4ex3JOZJUqzi_XkdPJkD-F82S_ol4g6HvVh4jhf5h73u_j2Kr0z1T9wFSabPSK95zbRZtbOzGRylElj4uLq09QzGPNIEVds4oGFshEaVQscRzlbJIUX-e6TiHPwmpJCOuqbY2d_QEv6WBmoDPXokHjyMzp4s_QbkK-8DSrsOtcfQgOytUocjtYZXwjCJirmLz1a6KO',
+      'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&q=80&w=1000',
     ctaText: 'Explore Interiors',
     targetTab: 'interiors',
     offsetMargin: true,
@@ -53,7 +53,7 @@ export const SERVICES_DATA: DesignService[] = [
       'Create personal havens embracing "Quiet Luxury" and "Japandi Minimalism", ensuring restful nights in beautifully curated spaces that reflect elevated comfort.',
     features: ['Serene Ambiance', 'Custom Furnishings', 'Tailored Lighting'],
     imageUrl:
-      'https://lh3.googleusercontent.com/aida/AP1WRLvPXX2eirAaT71EnZUD-AfSZT6N9fPy6WoDH4wAbNzM7IXRMXJX-X2LeTOJebdb9msitvNRxhZ9zPDcz4vJm9mELNuLi-iUuvVG2oFl0outk-w9naG8_hyFt7HHm0-4lh9YR0l5SHJ-c9RSp_JGeX4LbEE_iUqlXAF0lIQvMh__7PaykneADEiogOVTXhHHqwW6fBFWKFY9hTT-u8n5t0B8oguDjajdzaXTHhsGjABgwlISTN_hTWEO55D0',
+      'https://images.unsplash.com/photo-1616594039964-ae9021a400a0?auto=format&fit=crop&q=80&w=1000',
     ctaText: 'Explore Bedrooms',
     targetTab: 'interiors',
     offsetMargin: false,
@@ -67,7 +67,7 @@ export const SERVICES_DATA: DesignService[] = [
       'Transformative renovation and Modern Facade Engineering using premium ACP/HPL cladding. We blend structural improvements with the latest local exterior trends.',
     features: ['Modern Facade Engineering', 'ACP/HPL Cladding', 'Complete Transformation'],
     imageUrl:
-      'https://lh3.googleusercontent.com/aida/AP1WRLspZNgMckfFW3nJbsDbA9jWdMYV5sgOYvDWy0utaQjOzQsclRpgpZeimod7muKdV1YeY-LpmTU_uhM3hhDOcxzn75iQeMByOTnWNH8eCQiU1LRM90vCSvedCIvldHz1xuTouEuU3cRluWyTKB07dONvD0kd350Hi4r05Z2pYqqQIJ_u-Jhu9_r2faomDAL-JCjFhCjqlYbpNbEdwUq5jJe_x3KRZ0aV99ByJlMHy-9zZvJX2-pIMhGY3NM',
+      'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=1000',
     ctaText: 'Explore Exteriors',
     targetTab: 'exteriors',
     offsetMargin: true,
@@ -84,7 +84,7 @@ export const PORTFOLIO_PROJECTS: PortfolioProject[] = [
       'Modern 4 BHK Penthouse interior showing expansive windows, minimalist luxury furniture, and a sophisticated neutral color palette with subtle texture.',
     promise: 'Crafting your legacy with our promised 45-Day Delivery.',
     imageUrl:
-      'https://lh3.googleusercontent.com/aida/AP1WRLtXo6_goFctvb8Rq73BWr3R_O2WPWiT1zhVAJ545jrrdgBra1swewRCsKMYo0B_oiZc370jdS0g-0G5yBXk3qcGiKyvZazBWWPRTokLandw9feLc_DyPHLiscJKLcBYSb-gB_ARfNhx1yGThwijSaM-eq4FX565EtUV5D7G_oZxdfuucnCRnT-hBaCASGhWbJBd_nIbGzVhblWMKUsgGE2VExgaDeo8Q5ePN7jzT8J41Pm5yp6UyApPhUJY',
+      'https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&q=80&w=1000',
     aspectRatioClass: 'aspect-[4/5]',
     location: 'Gomti Nagar, Lucknow',
     timeline: '42 Days',
@@ -101,7 +101,7 @@ export const PORTFOLIO_PROJECTS: PortfolioProject[] = [
       'Contemporary flat interior in Noida featuring bespoke modular cabinetry, warm lighting, and seamless integration of functional spaces.',
     promise: 'Crafting your legacy with our promised 45-Day Delivery.',
     imageUrl:
-      'https://lh3.googleusercontent.com/aida/AP1WRLsy-fk7-NsUZXWwPYVa6bJSrG58mAdW2L8sIXr2ajjqN7asBJi7TxRwWJSeSaQE3SpgvFQLk4Y1vtLY1D59SnQPNhP1PQ1on-UmGejHB1e0zrD6xusIcQxqjnB_ZkSgCOR1oejz5csnpozbP_3Lma_zav50h7OkqVahokSCwfb8jdeHDB4BizWqg2EmO_6au0iVhnrDInCDBNKFwZvkpCdSO6KM0Lczguku5iD74_Fvz1fklHG3buk8L_A3',
+      'https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&q=80&w=1000',
     aspectRatioClass: 'aspect-square',
     location: 'Sector 128, Noida',
     timeline: '38 Days',
@@ -118,7 +118,7 @@ export const PORTFOLIO_PROJECTS: PortfolioProject[] = [
       'A sanctuary defined by natural stone textures, rich terracotta headboard, warm earthy linens, and sophisticated ambient lighting.',
     promise: 'Crafting your legacy with our promised 45-Day Delivery.',
     imageUrl:
-      'https://lh3.googleusercontent.com/aida/AP1WRLutlP-QdJZW1CQS6BqJSlpZk1GYi3snfgXiXyT6_xTE7t6Kvlg6yWYD9O7KUpWRf9uPU6JB-Uin-RHiG1MrqMhmX6vR2QYlyGu44MkQgZd87inuCEJSJA4ZBzQd08Rd0FQLvJOCwNhehLdqZSFUPlFrRN12upvTmJMw9PayXPODR-rcqGQoG3BSYuhkUPqclaRehpK9EZ_ZZUsPNNpnhqLg4-pwsdg182VFnEnXTUuT4GqzCPKY56DRp7K-',
+      'https://images.unsplash.com/photo-1616594039964-ae9021a400a0?auto=format&fit=crop&q=80&w=1000',
     aspectRatioClass: 'aspect-[3/4]',
     location: 'Vikas Nagar, Raebareli',
     timeline: '45 Days',
@@ -135,7 +135,7 @@ export const PORTFOLIO_PROJECTS: PortfolioProject[] = [
       'Classic elegance elevated through neoclassical moldings, subtle arches, soft ambient glow, and timeless brass detailing.',
     promise: 'Crafting your legacy with our promised 45-Day Delivery.',
     imageUrl:
-      'https://lh3.googleusercontent.com/aida-public/AB6AXuCNM0Rt1ddcJgD5YVDlI5KBJ13kSTcVzupea-HmcfPpkKQP5GzL9yV0v-L324wxXkz6a3K5YslqMllE2BxTijI_c5loneR-FsYhfaM55SPCBbl-bkzh0ivImKUVorlE7Y0wS1_9X5HJ2kEIlySokYlm051yFXkktcHFguFz2ORxHB6XoUjUpaZNMq8s26m_9om3kd-II-w6McIW_whKQibPQq4daYjFkw2GAHr6cgFNLTkPVYIBAuVUHw',
+      'https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?auto=format&fit=crop&q=80&w=1000',
     aspectRatioClass: 'aspect-video',
     location: 'Hazratganj, Lucknow',
     timeline: '40 Days',
@@ -152,7 +152,7 @@ export const PORTFOLIO_PROJECTS: PortfolioProject[] = [
       'High-performance exterior facelift utilizing weatherproof HPL wooden slats, CNC laser-cut aluminum louvers, and warm dusk architectural uplighting.',
     promise: 'Crafting your legacy with our promised 45-Day Delivery.',
     imageUrl:
-      'https://lh3.googleusercontent.com/aida-public/AB6AXuCb1greLS2efzrKQ79JU-lhRX5_PbLUSOW8Z-q_ze2VhVBJ7q_0Qw4UbURMEoCDPyzcdBCoYIyJJxKA44PZNHoaNJvKeFjR_dk_S16jW7DpmDHsLERs_xFojLcEb7EieQN2BN-yEaIC4gmsk9znNBJTUedGfJ3rcNRMXXqi15n6Fk4wDLZJgUThfdVBzhWtbb45kPDzduVq0ODW5nYfTWxfPamOxCh5pMKhrDI-68pvgGUDTMA-e0_i5g',
+      'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=1000',
     aspectRatioClass: 'aspect-[16/10]',
     location: 'Civil Lines, Kanpur',
     timeline: '35 Days',
@@ -169,7 +169,7 @@ export const PORTFOLIO_PROJECTS: PortfolioProject[] = [
       'Seamless Scandinavian-Japanese inspired open kitchen with stone composite island counter and discreet ambient LED channels.',
     promise: 'Crafting your legacy with our promised 45-Day Delivery.',
     imageUrl:
-      'https://lh3.googleusercontent.com/aida/AP1WRLvIDO4Zp_vjYncDBBjIlgNUBY9bCDNznBUZ6Ypi6PZ3KTQI9wtqVCrCwsj3OVEv5Keoa3UBKoIrMm6EsMuwLubngHHVVSmAZrnAtcy-TxsuwpRvrDPP_00zeB_mYsH59hyY85Pb_tX4c_eni22KM4oIV7TIY3WN8ZyXHYYwmtkxTnOr0g3DSkN8_rAFbSzMO-MP-yO9DBoDl8JEkB1L05zzgy6G1Na5SItAqynjw0JAevGmOrkagfeRG74',
+      'https://images.unsplash.com/photo-1600585152220-90363fe7e115?auto=format&fit=crop&q=80&w=1000',
     aspectRatioClass: 'aspect-square',
     location: 'Indira Nagar, Raebareli',
     timeline: '30 Days',
@@ -199,7 +199,7 @@ export const BEFORE_AFTER_PROJECTS = [
     city: 'Lucknow',
     category: 'Living Room',
     handoverDays: 42,
-    beforeImg: 'https://images.unsplash.com/photo-1541888946425-d0fbb186a5b3?auto=format&fit=crop&q=80&w=1000', // Unfinished raw concrete site
+    beforeImg: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&q=80&w=1000', // Unfinished raw concrete site
     afterImg: HERO_IMAGE, // Luxury living room
     description: 'Converted an unfinished bare shell concrete apartment into a Japandi-inspired quiet luxury sanctuary with hidden mood channels and acoustic wall panels.',
     keySpecs: ['Italian Botticino Marble', 'Hidden Mood Channels', 'Custom Velvet Lounge'],
@@ -211,7 +211,7 @@ export const BEFORE_AFTER_PROJECTS = [
     category: 'Modular Kitchen',
     handoverDays: 30,
     beforeImg: 'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=1000', // Traditional messy old kitchen
-    afterImg: 'https://lh3.googleusercontent.com/aida/AP1WRLvslr2DgQQCY8t3d2yuPLqU0YcCNWIBC72qRN_DOcW_xl1hCDC4Qsls2HwsAaLYiqvzxJUZw1d2Gd68yhEi7F4_4guqSvgpQMhjxZ_Z_9wrf1z_vulgbcrj0sj69UAiHzu8fG2rBeAOaayiWdPwO770GqM4hhJuCqI3Pkw0vnups3vBXZ6pfQdDgc2GZxDcM2DaI_u-gKo95hCFnuANvohzouRQZ7wTZV_xgLHjFWoG1egGE72spJ3PO47J', // Sleek modern Gola kitchen
+    afterImg: 'https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&q=80&w=1000', // Sleek modern Gola kitchen
     description: 'Replaced outdated tiled counter and wooden doors with 100% boiling-water-proof HDHMR carcass, anti-fingerprint super-matte shutters, and seamless Gola channels.',
     keySpecs: ['Boiling-Water-Proof HDHMR', 'Anti-Fingerprint Matte Shutters', 'German Soft-Close Drawers'],
   },
